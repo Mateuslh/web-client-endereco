@@ -1,0 +1,82 @@
+<div class="cidade">
+    <h1 class="mb-4">Gerenciar Cidades</h1>
+
+    <div class="alert" ng-class="{'alert-success': mensagem.tipo === 'success', 'alert-danger': mensagem.tipo === 'danger', 'alert-warning': mensagem.tipo === 'warning'}"
+         ng-if="mensagem"
+         role="alert">
+        {{ mensagem.texto }}
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5>{{ editando ? 'Editar Cidade' : 'Adicionar Nova Cidade' }}</h5>
+        </div>
+        <div class="card-body">
+            <form ng-submit="editando ? atualizarCidade() : criarCidade()">
+                <div class="form-group">
+                    <label for="nome">Nome <span class="text-danger">*</span></label>
+                    <input class="form-control" id="nome" ng-model="novoCidade.nome" required type="text">
+                </div>
+                <div class="form-group">
+                    <label for="tamanho">Tamanho <span class="text-danger">*</span></label>
+                    <select class="form-control" id="tamanho" ng-model="novoCidade.tamanho" required>
+                        <option disabled selected value="">-- Selecione o Tamanho --</option>
+                        <option value="PEQUENO">Pequeno</option>
+                        <option value="MEDIO">Médio</option>
+                        <option value="GRANDE">Grande</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="estado">Estado <span class="text-danger">*</span></label>
+                    <select class="form-control" id="estado" ng-model="novoCidade.estado"
+                            ng-options="estado as estado.nome for estado in estados track by estado.id" required>
+                        <option value="">-- Selecione um Estado --</option>
+                    </select>
+                </div>
+                <div class="form-group d-flex justify-content-center justify-content-lg-end">
+                    <button class="btn btn-primary" type="submit">{{ editando ? 'Atualizar' : 'Adicionar' }}</button>
+                    <button class="btn btn-secondary ml-2" ng-click="cancelarEdicao()" ng-show="editando" type="button">
+                        Cancelar
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5>Lista de Cidades</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-responsive-sm">
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Tamanho</th>
+                    <th>Estado</th>
+                    <th>País</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="cidade in cidades">
+                    <td>{{ cidade.id }}</td>
+                    <td>{{ cidade.nome }}</td>
+                    <td>{{ cidade.tamanho }}</td>
+                    <td>{{ cidade.estado.nome }}</td>
+                    <td>{{ cidade.estado.pais.nome }}</td>
+                    <td>
+                        <button class="btn btn-sm btn-info mr-2" ng-click="selecionarCidade(cidade)">Editar</button>
+                        <button class="btn btn-sm btn-danger" ng-click="deletarCidade(cidade.id)">Deletar</button>
+                    </td>
+                </tr>
+                <tr ng-if="cidades.length === 0">
+                    <td class="text-center" colspan="6">Nenhuma cidade encontrada.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplicação AngularJS com Navegação</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <!-- AngularJS ngRoute -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Application JS -->
+    <script src="app.js"></script>
+
+    <!-- Services -->
+    <script src="services/pais.service.js"></script>
+    <script src="services/estado.service.js"></script>
+    <script src="services/cidade.service.js"></script>
+    <script src="services/dashboard.service.js"></script>
+
+    <!-- Components -->
+    <script src="components/nav-bar.component.js"></script>
+
+    <!-- Controllers -->
+    <script src="controllers/dashboard.controller.js"></script>
+    <script src="controllers/estado.controller.js"></script>
+    <script src="controllers/cidade.controller.js"></script>
+</head>
+<body>
+<nav-bar></nav-bar>
+<div class="container mt-4" ng-view></div>
+
+<!-- Bootstrap JS and Dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

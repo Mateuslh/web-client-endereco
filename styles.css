@@ -1,0 +1,38 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.estado, .cidade {
+    text-align: left;
+}
+
+.card-header h5 {
+    margin: 0;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.table-responsive-sm {
+    overflow-x: auto;
+}
+
+.hover-text:hover {
+    color: #3498db; /* Altere a cor para a variável de cor do Bootstrap */
+    text-decoration: underline; /* Opcional: adiciona sublinhado no hover */
+}
+
+.logo-hover {
+    transition: transform 0.3s ease; /* Animação suave */
+}
+
+.logo-hover:hover {
+    transform: scale(1.1); /* Aumenta a escala em 10% */
+}

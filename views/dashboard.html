@@ -1,0 +1,17 @@
+<div class="dashboard">
+    <h2 class="mb-4">Dashboard de Cidades por Estado</h2>
+
+    <div class="alert" ng-class="{'alert-success': mensagem.tipo === 'success', 'alert-danger': mensagem.tipo === 'danger', 'alert-warning': mensagem.tipo === 'warning'}"
+         ng-if="mensagem"
+         role="alert">
+        {{ mensagem.texto }}
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+            <canvas id="dashboardChart"></canvas>
+        </div>
+    </div>
+</div>

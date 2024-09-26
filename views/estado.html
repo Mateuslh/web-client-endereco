@@ -1,0 +1,72 @@
+<div class="estado">
+    <h1 class="mb-4">Gerenciar Estados</h1>
+
+    <div class="alert" ng-class="{'alert-success': mensagem.tipo === 'success', 'alert-danger': mensagem.tipo === 'danger', 'alert-warning': mensagem.tipo === 'warning'}"
+         ng-if="mensagem"
+         role="alert">
+        {{ mensagem.texto }}
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5>{{ editando ? 'Editar Estado' : 'Adicionar Novo Estado' }}</h5>
+        </div>
+        <div class="card-body">
+            <form ng-submit="editando ? atualizarEstado() : criarEstado()">
+                <div class="form-group">
+                    <label for="nome">Nome <span class="text-danger">*</span></label>
+                    <input class="form-control" id="nome" ng-model="novoEstado.nome" required type="text">
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <textarea class="form-control" id="descricao" ng-model="novoEstado.descricao" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="pais">País <span class="text-danger">*</span></label>
+                    <select class="form-control" id="pais" ng-model="novoEstado.pais"
+                            ng-options="pais as pais.nome for pais in paises track by pais.id" required>
+                        <option value="">-- Selecione um País --</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" type="submit">{{ editando ? 'Atualizar' : 'Adicionar' }}</button>
+                <button class="btn btn-secondary ml-2" ng-click="cancelarEdicao()" ng-show="editando" type="button">
+                    Cancelar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5>Lista de Estados</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-responsive-sm">
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>País</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="estado in estados">
+                    <td>{{ estado.id }}</td>
+                    <td>{{ estado.nome }}</td>
+                    <td>{{ estado.descricao }}</td>
+                    <td>{{ estado.pais.nome }}</td>
+                    <td>
+                        <button class="btn btn-sm btn-info mr-2" ng-click="selecionarEstado(estado)">Editar</button>
+                        <button class="btn btn-sm btn-danger" ng-click="deletarEstado(estado.id)">Deletar</button>
+                    </td>
+                </tr>
+                <tr ng-if="estados.length === 0">
+                    <td class="text-center" colspan="5">Nenhum estado encontrado.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
